@@ -56,3 +56,25 @@ else:
 finally:
     file.close()
     print("file was closed")
+
+# ----------------------------------------JSON----------------------------------------
+# Save data to data_file
+with open("data.json", "r") as data_file:
+
+    # -------------UPDATE ('w')-----------
+    # reading old data
+    data = json.load(data_file)
+    # updating old data with new data
+    data.update(new_data)
+
+with open("data.json", "w") as data_file:
+    # saving updated data
+    json.dump(data, data_file, indent=4)
+
+    # -------------WRITE ('w')-----------
+    json.dump(new_data, data_file, indent=4)
+
+    # -------------READ ('r')-----------
+    data = json.load(data_file)
+    print(data)
+    print(type(data))
